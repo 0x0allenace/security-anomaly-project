@@ -1,0 +1,25 @@
+# Core Data Handling
+pandas
+numpy
+
+# Synthetic Data Generation
+faker
+
+# Visualization
+matplotlib
+seaborn
+
+# Machine Learning (Classical Models)
+scikit-learn
+
+# Dimensionality Reduction & Visualization
+umap-learn
+
+# Deep Learning (Autoencoder)
+torch
+
+# Notebook Environment
+jupyter
+
+# Optional Utilities (useful later)
+scipy
