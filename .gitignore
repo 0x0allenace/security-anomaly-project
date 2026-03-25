@@ -26,9 +26,10 @@ dist/
 *.egg-info/
 
 # Model artifacts and generated outputs
+outputs/*
+!outputs/figures/
+!outputs/figures/*.png
 outputs/models/
-outputs/figures/
 
 data/raw/*.csv
 data/processed/*.csv
-outputs/

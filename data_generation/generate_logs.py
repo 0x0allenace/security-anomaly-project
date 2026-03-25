@@ -54,6 +54,8 @@ RESOURCES = [
 def random_ip(prefix: str) -> str:
     return f"{prefix}.{random.randint(1, 254)}"
 
+# generate synthetic logs based on user profiles, simulating normal login and access patterns with realistic timestamps, success rates, session durations, and resource access to create a dataset for anomaly detection model training and evaluation
+
 
 def build_user_profiles(num_users: int = 50) -> List[UserProfile]:
     profiles: List[UserProfile] = []

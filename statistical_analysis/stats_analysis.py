@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+from statsmodels.tsa.seasonal import seasonal_decompose
+import matplotlib.pyplot as plt
 
 # This script performs statistical analysis on the processed log data to identify potential anomalies based on session duration, login frequency, and risk scores. It computes z-scores for these features and applies both z-score and IQR methods to flag anomalous entries. The results are printed to the console and the processed dataset with statistical features is saved for further use in model training and evaluation.
 
@@ -61,6 +63,47 @@ def run_statistical_analysis(df):
         }
 
     return df, results
+
+# Seasonal decomposition for a given column to analyze trends and seasonality in the data
+
+
+def run_seasonal_decomposition(df, column, period=12, model="additive"):
+    """
+    Perform seasonal decomposition on a time series column.
+
+    Parameters:
+        df (pd.DataFrame): input dataframe
+        column (str): column to decompose
+        period (int): seasonal period
+        model (str): 'additive' or 'multiplicative'
+
+    Returns:
+        decomposition: statsmodels decomposition result
+    """
+
+    df = df.copy()
+    df["timestamp"] = pd.to_datetime(df["timestamp"])
+    df = df.sort_values("timestamp")
+
+    # Build time series
+    ts = df.set_index("timestamp")[column]
+
+    # If duplicate timestamps exist, aggregate first
+    ts = ts.groupby(level=0).mean()
+
+    # Fill missing timestamps by forward fill after resampling
+    ts = ts.resample("5min").mean().ffill()
+
+    decomposition = seasonal_decompose(ts, model=model, period=period)
+
+    return decomposition
+
+
+def plot_seasonal_decomposition(decomposition, column):
+    fig = decomposition.plot()
+    fig.set_size_inches(12, 8)
+    plt.suptitle(f"Seasonal Decomposition of {column}", y=1.02)
+    plt.show()
 
 # Function to print the results of the statistical analysis in a readable format
 

@@ -23,3 +23,6 @@ jupyter
 
 # Optional Utilities (useful later)
 scipy
+
+# seasonal decomposition
+statsmodels

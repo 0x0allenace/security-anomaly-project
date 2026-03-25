@@ -67,7 +67,7 @@ def add_user_baseline(df):
 
     return df
 
-# Risk score (IMPORTANT)
+# Risk score
 
 
 def compute_risk_score(df):
@@ -82,7 +82,92 @@ def compute_risk_score(df):
     return df
 
 
+def add_moving_averages(df, window=5):
+    """
+    Add moving average features for temporal smoothing (per user).
+
+    Parameters:
+        df (pd.DataFrame): Input dataframe
+        window (int): rolling window size
+
+    Returns:
+        df (pd.DataFrame): dataframe with new features
+    """
+
+    # Ensure timestamp is datetime
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+    # Sort by user + time
+    df = df.sort_values(by=['user_id', 'timestamp'])
+
+    # Moving averages (per user)
+    df[f'risk_score_ma_{window}'] = (
+        df.groupby('user_id')['risk_score']
+        .rolling(window=window, min_periods=1)
+        .mean()
+        .reset_index(level=0, drop=True)
+    )
+
+    df[f'login_freq_ma_{window}'] = (
+        df.groupby('user_id')['login_freq_5']
+        .rolling(window=window, min_periods=1)
+        .mean()
+        .reset_index(level=0, drop=True)
+    )
+
+    # Deviation from moving average
+    df[f'risk_score_dev_{window}'] = (
+        df['risk_score'] - df[f'risk_score_ma_{window}']
+    )
+
+    return df
+
+
+def add_time_window_aggregation(df, window='5min'):
+    """
+    Aggregate user activity over time windows.
+
+    Parameters:
+        df (pd.DataFrame): input dataframe
+        window (str): time window (e.g., '5T' = 5 minutes)
+
+    Returns:
+        df_agg (pd.DataFrame): aggregated dataframe
+    """
+
+    # Ensure timestamp is datetime
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+    # Sort values
+    df = df.sort_values(by='timestamp')
+
+    # Set index for resampling
+    df = df.set_index('timestamp')
+
+    # Group by user + time window
+    df_agg = (
+        df.groupby('user_id')
+          .resample(window)
+          .agg({
+              'login_freq_5': 'sum',
+              'failed_attempts': 'sum',
+              'risk_score': 'mean'
+          })
+        .reset_index()
+    )
+
+    # Rename columns for clarity
+    df_agg.rename(columns={
+        'login_freq_5': f'login_count_{window}',
+        'failed_attempts': f'failed_attempts_{window}',
+        'risk_score': f'risk_score_mean_{window}'
+    }, inplace=True)
+
+    return df_agg
+
 # Main pipeline
+
+
 def run_feature_engineering(input_path, output_path):
 
     df = load_data(input_path)
