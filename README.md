@@ -70,7 +70,8 @@ security-anomaly-project/
 1. Generate baseline synthetic security logs  
 2. Inject attack scenarios into baseline logs  
 3. Engineer temporal, behavioral, and statistical features  
-4. Inspect and validate outputs in notebook  
+4. Apply statistical and temporal analysis techniques  
+5. Inspect and validate outputs in notebook    
 
 ## Simulated Attack Scenarios
 
@@ -85,7 +86,20 @@ security-anomaly-project/
 - Rolling login behavior  
 - Statistical deviation metrics  
 - User baseline deviation  
-- Composite risk score
+- Composite risk score  
+- Moving average smoothing (temporal trends)  
+- Time-window aggregation (behavior summarization)  
+  
+
+## Statistical & Temporal Analysis
+
+- Distribution analysis (histograms)  
+- Z-score based anomaly detection  
+- Interquartile Range (IQR) method  
+- Moving averages for temporal smoothing  
+- Time-window aggregation for burst detection  
+- Seasonal decomposition for trend and residual analysis  
+
 
 ## Setup
 
