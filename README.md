@@ -17,16 +17,15 @@ The project currently includes:
 - Synthetic enterprise security log generation
 - Adversarial attack injection
 - Behavioral feature engineering
-- Exploration notebook for validation and observations
+- Exploration notebook for validation, visualization, and model evaluation
+- Implementation of Isolation Forest and Local Outlier Factor (LOF)
 
 Planned stages include:
 
 - Statistical anomaly baseline analysis
-- Isolation Forest
-- Local Outlier Factor
 - One-Class SVM
 - Autoencoder
-- Evaluation and visualization
+- Comparative evaluation of models
 - Final report documentation
 
 ## Project Structure
@@ -71,7 +70,8 @@ security-anomaly-project/
 2. Inject attack scenarios into baseline logs  
 3. Engineer temporal, behavioral, and statistical features  
 4. Apply statistical and temporal analysis techniques  
-5. Inspect and validate outputs in notebook    
+5. Inspect and validate outputs in notebook
+6. Apply unsupervised anomaly detection models (Isolation Forest, LOF)    
 
 ## Simulated Attack Scenarios
 
@@ -98,7 +98,26 @@ security-anomaly-project/
 - Interquartile Range (IQR) method  
 - Moving averages for temporal smoothing  
 - Time-window aggregation for burst detection  
-- Seasonal decomposition for trend and residual analysis  
+- Seasonal decomposition for trend and residual analysis 
+
+## Implemented Models
+
+The following anomaly detection models have been implemented and evaluated:
+
+- Isolation Forest (global anomaly detection)
+- Local Outlier Factor (LOF) (density-based local anomaly detection)
+
+Initial results indicate that Isolation Forest performs strongly in detecting global anomalies, while LOF shows sensitivity to local density variations but struggles with highly skewed feature distributions.
+
+Additional models (One-Class SVM and Autoencoder) will be implemented for further comparative analysis.
+
+## Current Progress
+
+- Full synthetic data pipeline completed  
+- Feature engineering pipeline established  
+- Statistical and temporal analysis implemented  
+- Isolation Forest and LOF models integrated  
+- Initial anomaly detection results and visualizations generated  
 
 
 ## Setup
