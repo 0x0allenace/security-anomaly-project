@@ -143,6 +143,16 @@ Run feature engineering pipeline::
 python3 feature_engineering/feature_engineering.py
 ```
 
+Run Isolation Forest:
+```bash
+python3 models/isolation_forest.py
+```
+
+Run Local Outlier Factor (LOF):
+```bash
+python3 models/lof.py
+```
+
 ## Research Notes
 
 This project is being developed incrementally with aligned code, notebook inspection, and report methodology updates to maintain reproducibility and research integrity.
