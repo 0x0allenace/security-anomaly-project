@@ -70,10 +70,10 @@ security-anomaly-project/
 4. Apply statistical and temporal analysis techniques  
 5. Inspect and validate outputs in notebook
 6. Apply unsupervised anomaly detection models:
-	•	Isolation Forest
-	•	Local Outlier Factor (LOF)
-	•	One-Class SVM
-	•	Autoencoder    
+	- 	Isolation Forest
+	- 	Local Outlier Factor (LOF)
+	- 	One-Class SVM
+	- 	Autoencoder    
 
 ## Simulated Attack Scenarios
 
@@ -104,26 +104,26 @@ security-anomaly-project/
 
 ## Implemented Models
 
-The following anomaly detection models have been implemented and evaluated:
-	•	Isolation Forest (global anomaly detection)
-	•	Local Outlier Factor (LOF) (density-based local anomaly detection)
-	•	One-Class SVM (boundary-based anomaly detection)
-	•	Autoencoder (deep learning-based reconstruction method)
+	The following anomaly detection models have been implemented and evaluated:
+	- 	Isolation Forest (global anomaly detection)
+	- 	Local Outlier Factor (LOF) (density-based local anomaly detection)
+	- 	One-Class SVM (boundary-based anomaly detection)
+	- 	Autoencoder (deep learning-based reconstruction method)
 
 ## Key Insights
-	•	Isolation Forest performs strongly in detecting global outliers.
-	•	LOF shows limited effectiveness due to weak local density structure in the dataset.
-	•	One-Class SVM provides moderate performance but struggles with overlapping feature boundaries.
-	•	Autoencoder achieves the best performance by learning complex behavioral patterns and identifying anomalies through reconstruction error.
+	- 	Isolation Forest performs strongly in detecting global outliers.
+	- 	LOF shows limited effectiveness due to weak local density structure in the dataset.
+	- 	One-Class SVM provides moderate performance but struggles with overlapping feature boundaries.
+	- 	Autoencoder achieves the best performance by learning complex behavioral patterns and identifying anomalies through reconstruction error.
 
 ## Current Progress
 
-	•	Full synthetic data pipeline completed
-	•	Feature engineering pipeline established
-	•	Statistical and temporal analysis implemented
-	•	All four anomaly detection models implemented
-	•	Model outputs, visualizations, and evaluations completed
-	•	Ready for final comparative analysis and reporting 
+	-	Full synthetic data pipeline completed
+	-	Feature engineering pipeline established
+	-	Statistical and temporal analysis implemented
+	-	All four anomaly detection models implemented
+	-	Model outputs, visualizations, and evaluations completed
+	-	Ready for final comparative analysis and reporting 
 
 
 ## Setup
