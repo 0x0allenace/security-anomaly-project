@@ -10,23 +10,21 @@ This project builds a high-fidelity synthetic enterprise security dataset and ap
 
 The goal of this project is to design and evaluate a framework capable of detecting anomalous behavioral patterns in enterprise security logs. The study focuses on comparing classical and deep learning anomaly detection approaches within a controlled synthetic environment.
 
+
 ## Current Scope
 
 The project currently includes:
 
-- Synthetic enterprise security log generation
-- Adversarial attack injection
-- Behavioral feature engineering
-- Exploration notebook for validation, visualization, and model evaluation
-- Implementation of Isolation Forest and Local Outlier Factor (LOF)
+- Synthetic enterprise security log generation  
+- Adversarial attack injection  
+- Behavioral feature engineering  
+- Exploration notebook for validation, visualization, and model evaluation  
+- Implementation of Isolation Forest, Local Outlier Factor (LOF), One-Class SVM, and Autoencoder  
 
 Planned stages include:
 
-- Statistical anomaly baseline analysis
-- One-Class SVM
-- Autoencoder
-- Comparative evaluation of models
-- Final report documentation
+- Comparative evaluation of models  
+- Final report documentation  
 
 ## Project Structure
 
@@ -71,7 +69,11 @@ security-anomaly-project/
 3. Engineer temporal, behavioral, and statistical features  
 4. Apply statistical and temporal analysis techniques  
 5. Inspect and validate outputs in notebook
-6. Apply unsupervised anomaly detection models (Isolation Forest, LOF)    
+6. Apply unsupervised anomaly detection models:
+	•	Isolation Forest
+	•	Local Outlier Factor (LOF)
+	•	One-Class SVM
+	•	Autoencoder    
 
 ## Simulated Attack Scenarios
 
@@ -103,21 +105,25 @@ security-anomaly-project/
 ## Implemented Models
 
 The following anomaly detection models have been implemented and evaluated:
+	•	Isolation Forest (global anomaly detection)
+	•	Local Outlier Factor (LOF) (density-based local anomaly detection)
+	•	One-Class SVM (boundary-based anomaly detection)
+	•	Autoencoder (deep learning-based reconstruction method)
 
-- Isolation Forest (global anomaly detection)
-- Local Outlier Factor (LOF) (density-based local anomaly detection)
-
-Initial results indicate that Isolation Forest performs strongly in detecting global anomalies, while LOF shows sensitivity to local density variations but struggles with highly skewed feature distributions.
-
-Additional models (One-Class SVM and Autoencoder) will be implemented for further comparative analysis.
+## Key Insights
+	•	Isolation Forest performs strongly in detecting global outliers.
+	•	LOF shows limited effectiveness due to weak local density structure in the dataset.
+	•	One-Class SVM provides moderate performance but struggles with overlapping feature boundaries.
+	•	Autoencoder achieves the best performance by learning complex behavioral patterns and identifying anomalies through reconstruction error.
 
 ## Current Progress
 
-- Full synthetic data pipeline completed  
-- Feature engineering pipeline established  
-- Statistical and temporal analysis implemented  
-- Isolation Forest and LOF models integrated  
-- Initial anomaly detection results and visualizations generated  
+	•	Full synthetic data pipeline completed
+	•	Feature engineering pipeline established
+	•	Statistical and temporal analysis implemented
+	•	All four anomaly detection models implemented
+	•	Model outputs, visualizations, and evaluations completed
+	•	Ready for final comparative analysis and reporting 
 
 
 ## Setup
@@ -151,6 +157,15 @@ python3 models/isolation_forest.py
 Run Local Outlier Factor (LOF):
 ```bash
 python3 models/lof.py
+```
+
+Run One-Class SVM:
+```bash
+python3 models/one_class_svm.py
+```
+Run Autoencoder:
+```bash
+python3 models/autoencoder.py
 ```
 
 ## Research Notes
