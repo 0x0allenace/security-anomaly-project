@@ -1,30 +1,24 @@
-
 # Behavioral Anomaly Detection in Security Event Logs Using Advanced Unsupervised Machine Learning Models
 
 ## Overview
 
-This project builds a high-fidelity synthetic enterprise security dataset and applies behavioral anomaly detection techniques using unsupervised machine learning models. The pipeline simulates realistic user activity, injects adversarial attack scenarios, engineers behavioral features, and evaluates anomaly detection models in a controlled environment.
-
+This project presents a comprehensive framework for behavioral anomaly detection in enterprise security logs using advanced unsupervised machine learning techniques. The system generates a high-fidelity synthetic dataset, simulates realistic attack scenarios, engineers behavioral features, and evaluates multiple anomaly detection models in a controlled and reproducible environment.
 
 ## Project Objective
 
-The goal of this project is to design and evaluate a framework capable of detecting anomalous behavioral patterns in enterprise security logs. The study focuses on comparing classical and deep learning anomaly detection approaches within a controlled synthetic environment.
+The objective of this project is to design, implement, and evaluate a robust anomaly detection framework capable of identifying suspicious behavioral patterns in enterprise security logs. The study compares classical and deep learning-based unsupervised models to determine their effectiveness in detecting complex and context-dependent anomalies.
 
+## Project Scope
 
-## Current Scope
-
-The project currently includes:
+This project includes:
 
 - Synthetic enterprise security log generation  
-- Adversarial attack injection  
+- Adversarial attack simulation  
 - Behavioral feature engineering  
-- Exploration notebook for validation, visualization, and model evaluation  
-- Implementation of Isolation Forest, Local Outlier Factor (LOF), One-Class SVM, and Autoencoder  
-
-Planned stages include:
-
-- Comparative evaluation of models  
-- Final report documentation  
+- Statistical and temporal analysis  
+- Implementation of multiple anomaly detection models  
+- Centralized evaluation pipeline  
+- Advanced visualization and interpretability analysis  
 
 ## Project Structure
 
@@ -63,17 +57,13 @@ security-anomaly-project/
 ```
 
 ## Implemented Pipeline
-
-1. Generate baseline synthetic security logs  
-2. Inject attack scenarios into baseline logs  
-3. Engineer temporal, behavioral, and statistical features  
-4. Apply statistical and temporal analysis techniques  
-5. Inspect and validate outputs in notebook
-6. Apply unsupervised anomaly detection models:
-	- 	Isolation Forest
-	- 	Local Outlier Factor (LOF)
-	- 	One-Class SVM
-	- 	Autoencoder    
+	1.	Generate synthetic enterprise security logs
+	2.	Inject adversarial attack scenarios
+	3.	Engineer temporal, behavioral, and statistical features
+	4.	Perform statistical and temporal analysis
+	5.	Train unsupervised anomaly detection models
+	6.	Evaluate model performance using standardized metrics
+	7.	Visualize anomaly patterns across time, users, and feature space 
 
 ## Simulated Attack Scenarios
 
@@ -110,20 +100,47 @@ security-anomaly-project/
 	- 	One-Class SVM (boundary-based anomaly detection)
 	- 	Autoencoder (deep learning-based reconstruction method)
 
-## Key Insights
-	- 	Isolation Forest performs strongly in detecting global outliers.
-	- 	LOF shows limited effectiveness due to weak local density structure in the dataset.
-	- 	One-Class SVM provides moderate performance but struggles with overlapping feature boundaries.
-	- 	Autoencoder achieves the best performance by learning complex behavioral patterns and identifying anomalies through reconstruction error.
+## Evaluation Framework
 
-## Current Progress
+A centralized evaluation pipeline was developed to ensure consistent performance measurement across all models. Metrics include:
+	•	True Positives (TP), False Positives (FP), False Negatives (FN), True Negatives (TN)
+	•	Precision, Recall, F1 Score, Accuracy
+	•	ROC-like curves and AUC
 
-	-	Full synthetic data pipeline completed
-	-	Feature engineering pipeline established
-	-	Statistical and temporal analysis implemented
-	-	All four anomaly detection models implemented
-	-	Model outputs, visualizations, and evaluations completed
-	-	Ready for final comparative analysis and reporting 
+Results are stored in:
+
+data/processed/model_comparison_results.csv
+
+## Key Findings
+
+	•	The Autoencoder achieved the best overall performance, demonstrating strong capability in detecting both global and subtle anomalies.
+	•	Isolation Forest performed well as a classical baseline, particularly for global outliers.
+	•	One-Class SVM showed moderate effectiveness but struggled with overlapping feature boundaries.
+	•	LOF underperformed due to weak local density structure in the dataset.
+
+## Visualization & Insights
+
+Advanced visualizations were used to interpret model behavior:
+	•	ROC-like curves → score-based model comparison
+	•	Temporal heatmaps → anomaly patterns across time
+	•	User-based heatmaps → identification of high-risk users
+	•	t-SNE projection → feature space structure and anomaly separability
+
+
+## Key Insight
+
+Anomalies in the dataset are best characterized as:
+
+“Locally deviating within structured behavioral manifolds rather than globally separable clusters”
+
+## Case Study
+
+User-level analysis revealed that anomalous behavior is:
+	•	Concentrated among specific users
+	•	Occurring in short, event-driven bursts
+	•	Distributed across time rather than continuous
+
+This reflects realistic enterprise attack patterns such as credential misuse and lateral movement.
 
 
 ## Setup
@@ -133,66 +150,47 @@ Install dependencies:
 ```bash
 python3 -m pip install -r requirements.txt
 ```
-
-Generate baseline logs:
+Run individual components:
 ```bash
 python3 data_generation/generate_logs.py
-```
-
-Inject attacks:
-```bash
 python3 data_generation/attack_simulation.py
-```
-
-Run feature engineering pipeline::
-```bash
 python3 feature_engineering/feature_engineering.py
-```
 
-Run Isolation Forest:
-```bash
 python3 models/isolation_forest.py
-```
-
-Run Local Outlier Factor (LOF):
-```bash
 python3 models/lof.py
-```
-
-Run One-Class SVM:
-```bash
 python3 models/one_class_svm.py
-```
-Run Autoencoder:
-```bash
 python3 models/autoencoder.py
+
+python3 -m evaluation.evaluation
 ```
+## Reproducibility
 
-## Research Notes
+The project supports full pipeline execution via:
+```bash
+python3 main.py
+```
+This regenerates data, retrains models, and recomputes evaluation results.
 
-This project is being developed incrementally with aligned code, notebook inspection, and report methodology updates to maintain reproducibility and research integrity.
+## Methodology Summary
 
-## Sample Output
+This project follows a structured anomaly detection approach:
+	1.	Synthetic log generation
+	2.	Attack injection
+	3.	Behavioral feature engineering
+	4.	Unsupervised model training
+	5.	Quantitative evaluation
+	6.	Qualitative visualization and interpretation
 
-Example attack distribution:
+## Conclusion
 
-- Normal: 5874
-- Credential Stuffing: 120
-- Lateral Movement: 100
-- Privilege Misuse: 80
-- Abnormal Session: 70
+This project demonstrates that effective behavioral anomaly detection requires a combination of robust feature engineering and models capable of capturing complex, non-linear patterns. Reconstruction-based methods, particularly Autoencoders, are highly effective in identifying subtle anomalies within structured behavioral data.
 
-## Methodology
-
-This project follows a structured anomaly detection pipeline:
-
-1. Synthetic log generation simulating enterprise user activity
-2. Injection of adversarial attack behaviors (credential abuse, lateral movement, etc.)
-3. Behavioral feature engineering using temporal, statistical, and user-based deviations
-4. Application of unsupervised anomaly detection models
-5. Evaluation using statistical and model-based metrics
-
-This approach ensures reproducibility, interpretability, and controlled experimentation.
+## Tech Stack
+	•	Python 3.10+
+	•	Scikit-learn
+	•	PyTorch / TensorFlow (Autoencoder)
+	•	Pandas, NumPy
+	•	Matplotlib, Seaborn
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Status](https://img.shields.io/badge/Status-Active-green)
