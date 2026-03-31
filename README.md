@@ -103,13 +103,15 @@ security-anomaly-project/
 ## Evaluation Framework
 
 A centralized evaluation pipeline was developed to ensure consistent performance measurement across all models. Metrics include:
-	•	True Positives (TP), False Positives (FP), False Negatives (FN), True Negatives (TN)
-	•	Precision, Recall, F1 Score, Accuracy
-	•	ROC-like curves and AUC
+
+- True Positives (TP), False Positives (FP), False Negatives (FN), True Negatives (TN)
+- Precision, Recall, F1 Score, Accuracy
+- ROC-like curves and AUC
 
 Results are stored in:
-
+```test
 data/processed/model_comparison_results.csv
+```
 
 ## Key Findings
 
@@ -121,10 +123,10 @@ data/processed/model_comparison_results.csv
 ## Visualization & Insights
 
 Advanced visualizations were used to interpret model behavior:
-	•	ROC-like curves → score-based model comparison
-	•	Temporal heatmaps → anomaly patterns across time
-	•	User-based heatmaps → identification of high-risk users
-	•	t-SNE projection → feature space structure and anomaly separability
+- ROC-like curves → score-based model comparison
+- Temporal heatmaps → anomaly patterns across time
+- User-based heatmaps → identification of high-risk users
+- t-SNE projection → feature space structure and anomaly separability
 
 
 ## Key Insight
@@ -136,9 +138,9 @@ Anomalies in the dataset are best characterized as:
 ## Case Study
 
 User-level analysis revealed that anomalous behavior is:
-	•	Concentrated among specific users
-	•	Occurring in short, event-driven bursts
-	•	Distributed across time rather than continuous
+- Concentrated among specific users
+- Occurring in short, event-driven bursts
+- Distributed across time rather than continuous
 
 This reflects realistic enterprise attack patterns such as credential misuse and lateral movement.
 
@@ -174,12 +176,13 @@ This regenerates data, retrains models, and recomputes evaluation results.
 ## Methodology Summary
 
 This project follows a structured anomaly detection approach:
-	1.	Synthetic log generation
-	2.	Attack injection
-	3.	Behavioral feature engineering
-	4.	Unsupervised model training
-	5.	Quantitative evaluation
-	6.	Qualitative visualization and interpretation
+
+- Synthetic log generation
+- Attack injection
+- Behavioral feature engineering
+- Unsupervised model training
+- Quantitative evaluation
+- Qualitative visualization and interpretation
 
 ## Conclusion
 
