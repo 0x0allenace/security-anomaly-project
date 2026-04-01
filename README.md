@@ -120,13 +120,18 @@ data/processed/model_comparison_results.csv
 	•	One-Class SVM showed moderate effectiveness but struggled with overlapping feature boundaries.
 	•	LOF underperformed due to weak local density structure in the dataset.
 
-## Visualization & Insights
+## Advanced Evaluation & Visualization
 
-Advanced visualizations were used to interpret model behavior:
-- ROC-like curves → score-based model comparison
-- Temporal heatmaps → anomaly patterns across time
-- User-based heatmaps → identification of high-risk users
-- t-SNE projection → feature space structure and anomaly separability
+The project includes a comprehensive evaluation framework combining quantitative metrics and visual analysis:
+
+- ROC-like curves using synthetic ground truth  
+- t-SNE visualization of behavioral feature space  
+- Temporal anomaly score heatmaps  
+- User-based anomaly heatmaps  
+- Silhouette score for exploratory cluster separation analysis  
+- Sensitivity analysis to evaluate model robustness under varying anomaly proportions  
+
+These techniques provide deeper insight into model behavior, robustness, and anomaly structure beyond standard evaluation metrics.
 
 
 ## Key Insight
