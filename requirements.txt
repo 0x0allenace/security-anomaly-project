@@ -1,28 +1,19 @@
 # Core Data Handling
 pandas
 numpy
-
 # Synthetic Data Generation
 faker
-
 # Visualization
 matplotlib
-seaborn
-
-# Machine Learning (Classical Models)
+# Machine Learning
 scikit-learn
-
 # Dimensionality Reduction & Visualization
 umap-learn
-
-# Deep Learning (Autoencoder)
+# Deep Learning
 torch
-
 # Notebook Environment
 jupyter
-
-# Optional Utilities (useful later)
+# Scientific Computing
 scipy
-
-# seasonal decomposition
+# Statistical and Time-Series Analysis
 statsmodels

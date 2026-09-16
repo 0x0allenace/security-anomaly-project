@@ -1,7 +1,8 @@
 # This script simulates various attack scenarios in an enterprise environment by injecting synthetic attack events into a dataset of normal user activity logs. The simulated attacks include credential stuffing, privilege misuse, abnormal session durations, and lateral movement. Each attack type is designed to mimic realistic patterns of malicious behavior while maintaining the overall structure and distribution of the original log data. The resulting dataset can be used for training and evaluating anomaly detection models in cybersecurity contexts.
 
 from __future__ import annotations
-
+import random
+import numpy as np
 from datetime import timedelta
 import random
 from typing import List
@@ -194,6 +195,7 @@ def print_attack_summary(df: pd.DataFrame) -> None:
 
 def main() -> None:
     random.seed(42)
+    np.random.seed(42)
 
     df = load_logs()
 
